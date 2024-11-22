@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snow Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            height: 100vh;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            user-select: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const snowflakes = 100; // Количество снежинок
+        const body = document.body;
+
+        for (let i = 0; i < snowflakes; i++) {
+            const snowflake = document.createElement("div");
+            snowflake.className = "snowflake";
+            snowflake.textContent = "❄";
+
+            const size = Math.random() * 1.5 + 0.5; // Размер снежинки
+            snowflake.style.fontSize = `${size}em`;
+
+            const duration = Math.random() * 5 + 5; // Скорость падения
+            snowflake.style.animationDuration = `${duration}s`;
+
+            const startX = Math.random() * 100; // Начальная позиция
+            snowflake.style.left = `${startX}vw`;
+
+            body.appendChild(snowflake);
+        }
+    </script>
+</body>
+</html>
